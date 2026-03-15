@@ -1,3 +1,5 @@
+> Also follow `/workspace/CLAUDE.md` for global workspace conventions.
+
 # Garden Assist
 
 ## Overview
