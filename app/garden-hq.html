@@ -117,10 +117,19 @@ p{margin-bottom:8px;line-height:1.65}
 .gg-rule{background:var(--bg3);border:1px solid var(--bd);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--txd);line-height:1.6;margin-bottom:16px}
 .gg-rule strong{color:var(--tx)}
 
+/* GERMINATION */
+.germ-tbl{width:100%;border-collapse:collapse;font-size:13px}
+.germ-tbl th{text-align:left;padding:8px 10px;border-bottom:2px solid var(--bd);color:var(--txd);font-family:'DM Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.5px;font-weight:400}
+.germ-tbl td{padding:7px 10px;border-bottom:1px solid var(--bd)}
+.germ-tbl tr:last-child td{border-bottom:none}
+.germ-tbl .whdr td{background:var(--bg3);font-weight:600;color:var(--txb);font-size:12px}
+.germ-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+
 @media(max-width:768px){
   .nav-inner{gap:0} .tab{padding:12px 12px;font-size:12px}
   .page{padding:16px} .zone{min-height:38px} .zone .em{font-size:14px} .zone .zl{display:none}
   .fence-spec{grid-template-columns:1fr} .cl-detail{display:none}
+  .germ-tbl td:nth-child(4),.germ-tbl td:nth-child(5),.germ-tbl th:nth-child(4),.germ-tbl th:nth-child(5){display:none}
 }
 </style>
 </head>
@@ -130,6 +139,7 @@ p{margin-bottom:8px;line-height:1.65}
   <div class="nav-brand">🌱 <span>Garden HQ</span></div>
   <div class="tab active" onclick="showPage('beds')">Bed Layout</div>
   <div class="tab" onclick="showPage('timeline')">Timeline</div>
+  <div class="tab" onclick="showPage('germ')">Germination</div>
   <div class="tab" onclick="showPage('shop')">Shopping List <span class="badge" id="shopBadge">0%</span></div>
   <div class="tab" onclick="showPage('fence')">Fence Build</div>
   <div class="tab" onclick="showPage('guide')">Growing Guide</div>
@@ -224,6 +234,195 @@ p{margin-bottom:8px;line-height:1.65}
   <div class="trow"><span class="tdate">Mid Jul</span><span class="tact">Pull spent peas → resow fall carrots or scallions. Optional resow #3 greens.</span><span class="ttag">resow</span></div>
   <div class="trow"><span class="tdate">Late Aug</span><span class="tact">Optional: resow spinach + arugula for fall harvest</span><span class="ttag">resow</span></div>
 </div>
+</div>
+
+<!-- ==================== GERMINATION GUIDE ==================== -->
+<div class="page" id="pg-germ">
+
+<div class="info">
+  🌱 <strong>Your setup:</strong> Basement rack with cover · 2ft grow lights · 1 heat mat (full shelf) · 1020 trays (solid + mesh inserts) · 2" soil cube makers<br>
+  📊 <strong>Totals:</strong> 52 soil blocks · 3 waves over 5 weeks · 2 trays max at peak · 2 lit shelves needed
+</div>
+
+<div class="card">
+  <h2>Tray & Shelf Setup</h2>
+
+  <h3 style="margin-top:12px">Tray Cross-Section</h3>
+  <p style="color:var(--txd);font-size:13px;margin-bottom:8px">Stack from bottom up. Mesh-in-solid lets you lift out blocks to drain and refresh water.</p>
+
+  <div style="display:flex;flex-direction:column;align-items:center;gap:2px;margin:14px 0;font-family:'DM Mono',monospace;font-size:12px">
+    <div style="padding:8px 0;max-width:280px;width:100%;text-align:center;border-radius:4px;background:color-mix(in srgb,var(--ac) 20%,var(--bg));color:var(--ac)">▓▓▓ 2" soil blocks ▓▓▓</div>
+    <div style="max-width:280px;width:100%;border-bottom:1px dashed var(--bd)"></div>
+    <div style="padding:6px 0;max-width:280px;width:100%;text-align:center;color:var(--txd)">╌╌╌ mesh tray (insert) ╌╌╌</div>
+    <div style="max-width:280px;width:100%;border-bottom:1px dashed var(--bd)"></div>
+    <div style="padding:6px 0;max-width:280px;width:100%;text-align:center;border-radius:4px;background:color-mix(in srgb,var(--bra) 15%,var(--bg));color:var(--bra)">≈≈ ~¼" water ≈≈</div>
+    <div style="max-width:280px;width:100%;border-bottom:1px dashed var(--bd)"></div>
+    <div style="padding:6px 0;max-width:280px;width:100%;text-align:center;color:var(--txd)">━━━ solid tray (bottom) ━━━</div>
+    <div style="max-width:280px;width:100%;border-bottom:1px dashed var(--bd)"></div>
+    <div style="padding:8px 0;max-width:280px;width:100%;text-align:center;border-radius:4px;background:color-mix(in srgb,var(--tom) 12%,var(--bg));color:var(--tom)">░░░ heat mat (germ only) ░░░</div>
+  </div>
+
+  <div class="gg-rule"><strong>Bottom water only.</strong> Pour into the solid tray — blocks wick up through the mesh. Lift the mesh insert to check water level, drain, and refresh. Never pour water on top of blocks.</div>
+  <div class="gg-rule"><strong>Water level:</strong> Keep ~¼" in the solid tray. Blocks should feel damp, not soggy. If the solid tray is dry, add water. If blocks are sitting in standing water, lift mesh and pour some out.</div>
+
+  <h3 style="margin-top:20px">Two-Shelf Layout</h3>
+  <p style="color:var(--txd);font-size:13px;margin-bottom:12px">Each shelf gets a light. The heat mat rotates to whichever shelf has fresh seeds.</p>
+
+  <div style="display:flex;flex-direction:column;gap:8px;margin:14px 0">
+    <div style="background:var(--bg3);border:2px solid var(--bd);border-radius:8px;padding:14px 16px">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--txd);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Shelf 2 — Growing Station</div>
+      <p style="font-size:13px;color:var(--txd);line-height:1.6"><strong style="color:var(--tx)">Seedlings move here once sprouted.</strong> Light 2-4" above leaf tips, raise as they grow. No heat mat. Clip fan pointed at this shelf for airflow. Rack cover open.</p>
+    </div>
+    <div style="background:var(--bg3);border:2px solid var(--ac);border-radius:8px;padding:14px 16px">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--ac);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Shelf 1 — Germination Station</div>
+      <p style="font-size:13px;color:var(--txd);line-height:1.6"><strong style="color:var(--tx)">Fresh seeds go here.</strong> Heat mat ON. Light ON (even before sprouts emerge). Rack cover closed around this shelf for humidity. Check daily — move sprouted trays up to Shelf 2.</p>
+    </div>
+  </div>
+
+  <div class="fence-spec">
+    <div class="fence-spec-item"><div class="label">Light Height</div><div class="val">2-4" above blocks</div></div>
+    <div class="fence-spec-item"><div class="label">Light Timer</div><div class="val">14-16 hrs/day</div></div>
+    <div class="fence-spec-item"><div class="label">Heat Mat</div><div class="val">70-80°F surface</div></div>
+    <div class="fence-spec-item"><div class="label">Cover</div><div class="val">Closed for germ → open once sprouted</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Soil Block Count</h2>
+  <p style="color:var(--txd);font-size:13px;margin-bottom:12px">Start ~50% extra blocks per crop as germination insurance. Thin to the strongest seedling per block. Extras make great neighbor gifts.</p>
+  <table class="germ-tbl">
+    <thead><tr><th>Crop</th><th>Need</th><th>Start</th><th>Germ °F</th><th>Days</th></tr></thead>
+    <tbody>
+      <tr class="whdr"><td colspan="5">Wave 1 — Brassicas + Greens · Mar 14-16 · 27 blocks → Tray A</td></tr>
+      <tr><td><span class="germ-dot" style="background:var(--bra)"></span>Broccoli</td><td>2</td><td>4</td><td>65-75</td><td>3-5</td></tr>
+      <tr><td><span class="germ-dot" style="background:var(--bra)"></span>Cabbage</td><td>1</td><td>2</td><td>65-75</td><td>3-5</td></tr>
+      <tr><td><span class="germ-dot" style="background:var(--bra)"></span>Cauliflower</td><td>2</td><td>4</td><td>65-75</td><td>3-5</td></tr>
+      <tr><td><span class="germ-dot" style="background:var(--bra)"></span>Kale</td><td>3</td><td>5</td><td>65-75</td><td>3-5</td></tr>
+      <tr><td><span class="germ-dot" style="background:var(--bra)"></span>Kohlrabi</td><td>4</td><td>6</td><td>65-75</td><td>3-5</td></tr>
+      <tr><td><span class="germ-dot" style="background:var(--grn)"></span>Head Lettuce</td><td>4</td><td>6</td><td>60-70</td><td>3-7</td></tr>
+
+      <tr class="whdr"><td colspan="5">Wave 2 — Tomatoes + Friends · Mar 28 - Apr 1 · 19 blocks → Tray B</td></tr>
+      <tr><td><span class="germ-dot" style="background:var(--tom)"></span>Sungold</td><td>1</td><td>2</td><td>75-85</td><td>5-10</td></tr>
+      <tr><td><span class="germ-dot" style="background:var(--tom)"></span>Black Cherry</td><td>1</td><td>2</td><td>75-85</td><td>5-10</td></tr>
+      <tr><td><span class="germ-dot" style="background:var(--tom)"></span>Juliet</td><td>1</td><td>2</td><td>75-85</td><td>5-10</td></tr>
+      <tr><td><span class="germ-dot" style="background:var(--tom)"></span>Black Krim</td><td>1</td><td>2</td><td>75-85</td><td>5-10</td></tr>
+      <tr><td><span class="germ-dot" style="background:var(--tom)"></span>Stupice</td><td>1</td><td>2</td><td>75-85</td><td>5-10</td></tr>
+      <tr><td><span class="germ-dot" style="background:var(--tom)"></span>Cherokee Purple</td><td>1</td><td>2</td><td>75-85</td><td>5-10</td></tr>
+      <tr><td><span class="germ-dot" style="background:var(--grn)"></span>Swiss Chard</td><td>2</td><td>3</td><td>65-75</td><td>5-7</td></tr>
+      <tr><td><span class="germ-dot" style="background:var(--hrb)"></span>Parsley</td><td>2</td><td>4</td><td>65-75</td><td>14-21</td></tr>
+
+      <tr class="whdr"><td colspan="5">Wave 3 — Basil · Apr 15-20 · 6 blocks → Tray B (room left)</td></tr>
+      <tr><td><span class="germ-dot" style="background:var(--hrb)"></span>Basil</td><td>4</td><td>6</td><td>75-85</td><td>5-10</td></tr>
+
+      <tr class="whdr"><td colspan="3">TOTAL: 52 blocks · 2 trays needed</td><td colspan="2"></td></tr>
+    </tbody>
+  </table>
+  <div class="gg-rule"><strong>Tray capacity:</strong> A 1020 tray fits ~50 two-inch blocks (5 across × 10 deep). Wave 1's 27 blocks fill one tray comfortably. Wave 2's 19 blocks get their own tray. Wave 3's 6 basil blocks fit in the remaining space on Tray B.</div>
+</div>
+
+<div class="card">
+  <h2>Wave-by-Wave Guide</h2>
+
+  <div class="gg-month">
+    <div class="gg-month-hdr" style="background:color-mix(in srgb,var(--bra) 15%,var(--bg2))">
+      Wave 1 — Brassicas + Greens
+      <span class="season" style="background:var(--bra);color:var(--bg)">Mar 14-16</span>
+    </div>
+    <div class="gg-task" style="border-color:var(--bra)">
+      <div class="freq">setup — 30 min</div>
+      <strong>Press 27 blocks into Tray A</strong> (mesh in solid). Group by crop and label tray edges with tape — you won't remember which block is which in a week. Drop 2 seeds per block, press gently into surface (~¼" deep for brassicas). Lettuce: surface-press only — needs light to germinate, don't bury.
+    </div>
+    <div class="gg-task" style="border-color:var(--bra)">
+      <div class="freq">environment</div>
+      <strong>Heat mat to 70°F.</strong> These are cool-season crops — they don't need tropical heat, but basement temps (60-65°F) slow germination. The mat cuts germination time from 7-10 days to 3-5 days. Rack cover closed around this shelf for humidity.
+    </div>
+    <div class="gg-task" style="border-color:var(--bra)">
+      <div class="freq">days 3-5 — watch for sprouts</div>
+      <strong>Once most seeds have sprouted:</strong> Move Tray A to the growing shelf (Shelf 2). Take it off the heat mat. Open the cover. Lights 2-4" above. <strong>Thin to 1 seedling per block</strong> — snip the weaker one with scissors, don't pull (pulling disturbs roots of the keeper).
+    </div>
+  </div>
+
+  <div class="gg-month">
+    <div class="gg-month-hdr" style="background:color-mix(in srgb,var(--tom) 15%,var(--bg2))">
+      Wave 2 — Tomatoes + Friends
+      <span class="season" style="background:var(--tom);color:var(--bg)">Mar 28 - Apr 1</span>
+    </div>
+    <div class="gg-task" style="border-color:var(--tom)">
+      <div class="freq">setup — 20 min</div>
+      <strong>Press 19 blocks into Tray B.</strong> Tomatoes: 2 seeds per block, ¼" deep. Chard: 2 seeds, ¼" deep. Parsley: 3-4 seeds per block, <strong>surface press only</strong> — parsley needs light to germinate, don't bury it. Label everything.
+    </div>
+    <div class="gg-task" style="border-color:var(--tom)">
+      <div class="freq">environment</div>
+      <strong>Heat mat to 80°F — critical for tomatoes.</strong> They won't germinate reliably below 70°F. Cover closed. Your Wave 1 brassicas are now on the growing shelf above, happily growing under lights with no mat.
+    </div>
+    <div class="gg-task" style="border-color:var(--tom)">
+      <div class="freq">days 5-10 — staggered sprouting</div>
+      <strong>Tomatoes emerge first (5-7 days), then chard (5-7).</strong> Move sprouted blocks to the growing shelf, or wait until most are up and move the whole tray. <strong>Parsley takes 14-21 days — don't give up on it.</strong> Leave parsley blocks on the mat or at room temp. They'll come.
+    </div>
+    <div class="gg-task" style="border-color:var(--tom)">
+      <div class="freq">at first true leaves</div>
+      <strong>Thin tomatoes to 1 per block</strong> when the first real leaves appear (not the round seed leaves). Pick the stockiest seedling, snip the rest.
+    </div>
+  </div>
+
+  <div class="gg-month">
+    <div class="gg-month-hdr" style="background:color-mix(in srgb,var(--hrb) 15%,var(--bg2))">
+      Wave 3 — Basil
+      <span class="season" style="background:var(--hrb);color:var(--bg)">Apr 15-20</span>
+    </div>
+    <div class="gg-task" style="border-color:var(--hrb)">
+      <div class="freq">setup — 10 min</div>
+      <strong>Press 6 blocks, add to Tray B</strong> (space left alongside tomato/chard/parsley seedlings). 2-3 seeds per block, surface press — basil needs light to germinate.
+    </div>
+    <div class="gg-task" style="border-color:var(--hrb)">
+      <div class="freq">environment</div>
+      <strong>Heat mat to 75-80°F.</strong> Basil is tropical — cold soil = no germination. By now your Wave 1 brassicas may be hardening off outside, freeing up shelf space.
+    </div>
+    <div class="gg-task" style="border-color:var(--hrb)">
+      <div class="freq">days 5-10</div>
+      <strong>Basil sprouts quickly in warmth.</strong> Move off mat once up. Thin to 1-2 per block (basil tolerates 2 per block). Keep under lights until transplant in late May.
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Heat Mat Rotation</h2>
+  <p style="color:var(--txd);font-size:13px;margin-bottom:12px">Your single mat works perfectly — waves are staggered so it's never needed in two places at once.</p>
+  <div class="trow"><span class="tdate" style="color:var(--bra)">Mar 14-19</span><span class="tact"><strong>Mat ON 70°F</strong> — Wave 1 brassicas germinating</span><span class="ttag" style="border-color:var(--bra);color:var(--bra)">wave 1</span></div>
+  <div class="trow"><span class="tdate">Mar 19-28</span><span class="tact">Mat OFF — brassicas sprouted, moved to growing shelf</span><span class="ttag">free</span></div>
+  <div class="trow"><span class="tdate" style="color:var(--tom)">Mar 28 - Apr 7</span><span class="tact"><strong>Mat ON 80°F</strong> — Wave 2 tomatoes germinating</span><span class="ttag" style="border-color:var(--tom);color:var(--tom)">wave 2</span></div>
+  <div class="trow"><span class="tdate">Apr 7-15</span><span class="tact">Mat OFF — tomatoes sprouted, moved to growing shelf</span><span class="ttag">free</span></div>
+  <div class="trow"><span class="tdate" style="color:var(--hrb)">Apr 15-25</span><span class="tact"><strong>Mat ON 75°F</strong> — Wave 3 basil germinating</span><span class="ttag" style="border-color:var(--hrb);color:var(--hrb)">wave 3</span></div>
+  <div class="trow"><span class="tdate">Apr 25+</span><span class="tact">Mat OFF — done for the season. All seedlings growing under lights.</span><span class="ttag">done</span></div>
+</div>
+
+<div class="card">
+  <h2>Light & Airflow</h2>
+  <div class="gg-rule"><strong>Light height is critical.</strong> 2-4" above the tallest leaf tip. Raise as seedlings grow. Too far = leggy, weak stems (the #1 indoor failure mode). Too close = rare issue with LEDs but watch for leaf curl.</div>
+  <div class="gg-rule"><strong>14-16 hours per day, on a timer.</strong> 6am-10pm works well. Seedlings need a dark period — don't run 24/7.</div>
+  <div class="gg-rule"><strong>Airflow prevents damping off.</strong> Once seedlings emerge, add a small clip fan aimed at the growing shelf. Low speed — gentle leaf movement, not a gale. This also strengthens stems for outdoor life.</div>
+  <div class="gg-rule"><strong>Rack cover protocol:</strong> Closed around the germination shelf (humidity helps seeds sprout). Open around the growing shelf (airflow prevents fungal disease). If you can't zone the cover per-shelf, prioritize airflow — remove the cover entirely once most seeds have sprouted and rely on bottom watering for moisture.</div>
+  <div class="gg-rule"><strong>Basement humidity is your friend.</strong> Basements are usually humid enough for soil blocks. If block edges are crumbling or turning pale, lightly mist with a spray bottle. But usually bottom watering handles it.</div>
+</div>
+
+<div class="card">
+  <h2>Daily Check (2 minutes)</h2>
+  <p style="color:var(--txd);font-size:13px;margin-bottom:12px">Every morning. Fast and simple.</p>
+  <div class="gg-rule"><strong>1. Water level.</strong> Lift mesh insert — is there water in the solid tray? Add ~¼" if dry. Blocks should feel damp, not soggy. If saturated, let them dry a bit before adding more.</div>
+  <div class="gg-rule"><strong>2. Check for sprouts.</strong> Any new seedlings emerging on the germination shelf? Once most are up, move that tray to the growing shelf (lights close, mat off, cover open, fan on).</div>
+  <div class="gg-rule"><strong>3. Light height.</strong> Seedlings grow fast. Adjust to maintain 2-4" clearance. If stems are stretching and getting thin, the light is too far.</div>
+  <div class="gg-rule"><strong>4. Quick disease scan.</strong> White fuzz on block surfaces = harmless mold (increase airflow). Seedling collapsed at soil level with a pinched stem = damping off (remove block, increase fan, reduce water). Yellowing lower leaves = overwatering or not enough light.</div>
+</div>
+
+<div class="card">
+  <h2>If Things Go Wrong</h2>
+  <div class="gg-rule"><strong>Leggy seedlings (tall, thin, floppy):</strong> Light is too far or too few hours. Move to 2" above. Confirm 14-16 hrs/day. Can't fix leggy stems, but bury them deeper when transplanting (especially tomatoes — they root from buried stems).</div>
+  <div class="gg-rule"><strong>Damping off (seedlings topple at soil line):</strong> Fungal — caused by wet + stagnant air. Remove dead seedlings. Increase fan. Reduce watering. Open the cover. Prevention is everything — you can't save a damped-off seedling.</div>
+  <div class="gg-rule"><strong>Blocks crumbling or falling apart:</strong> Mix was too dry. Re-wet aggressively (should drip freely when squeezed) and re-press. Easier to start over than rescue crumbly blocks.</div>
+  <div class="gg-rule"><strong>Nothing germinating after expected time:</strong> Check temperature (too cold = slow/no germination for warm-season crops). Check seed age — old seeds lose viability. Paper towel test: 10 seeds in a damp towel in a zip bag on the heat mat. If fewer than 5 sprout in a week, seed is bad.</div>
+  <div class="gg-rule"><strong>White mold on block surfaces:</strong> Harmless saprophytic fungi feeding on organic matter. Increase airflow. Scrape off if thick. Won't hurt seedlings. Don't panic.</div>
+</div>
+
 </div>
 
 <!-- ==================== SHOPPING LIST ==================== -->
@@ -516,7 +715,7 @@ function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('pg-'+id).classList.add('active');
-  document.querySelectorAll('.tab')[['beds','timeline','shop','fence','guide'].indexOf(id)].classList.add('active');
+  document.querySelectorAll('.tab')[['beds','timeline','germ','shop','fence','guide'].indexOf(id)].classList.add('active');
 }
 
 // ==================== BED DETAIL POPUPS ====================
