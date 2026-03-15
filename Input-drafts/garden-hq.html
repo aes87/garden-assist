@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garden HQ — Warren County NJ 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400&display=swap');
+:root{
+  --bg:#1a1f16;--bg2:#232920;--bg3:#2c3426;--bg4:#333d2c;
+  --tx:#e8e4d9;--txd:#9a9685;--txb:#f5f2e8;
+  --ac:#8ab648;--acd:#5a7a32;--bd:#3a4230;
+  --tom:#e05545;--bra:#5b9bd5;--grn:#6bc95b;--rt:#c4894d;
+  --hrb:#b58fd6;--leg:#d4c75a;--all:#d4a0b0;--shd:#4a5240;
+  --chk:#8ab648;--warn:#e8a84c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh}
+a{color:var(--ac)}
+
+/* NAV */
+.nav{background:var(--bg2);border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:100;padding:0 24px}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:0;overflow-x:auto}
+.nav-brand{font-size:16px;font-weight:600;color:var(--txb);padding:14px 16px 14px 0;white-space:nowrap;border-right:1px solid var(--bd);margin-right:4px}
+.nav-brand span{color:var(--ac)}
+.tab{padding:14px 18px;font-size:13px;color:var(--txd);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap;font-weight:500}
+.tab:hover{color:var(--tx)}
+.tab.active{color:var(--ac);border-bottom-color:var(--ac)}
+.tab .badge{background:var(--acd);color:var(--txb);font-size:10px;padding:1px 6px;border-radius:8px;margin-left:6px;font-family:'DM Mono',monospace}
+
+/* PAGE */
+.page{display:none;max-width:1100px;margin:0 auto;padding:24px}
+.page.active{display:block}
+
+/* SHARED */
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:24px;margin-bottom:24px}
+.card-sm{padding:16px 20px}
+.card h2{font-size:18px;font-weight:600;color:var(--txb);margin-bottom:12px}
+.card h3{font-size:15px;font-weight:600;color:var(--txb);margin-bottom:8px}
+.info{background:var(--bg2);border:1px solid var(--bd);border-radius:8px;padding:14px 18px;font-size:13px;color:var(--txd);line-height:1.6;margin-bottom:24px}
+.info strong{color:var(--tx)}
+p{margin-bottom:8px;line-height:1.65}
+
+/* BED GRIDS */
+.dir{font-family:'DM Mono',monospace;font-size:10px;color:var(--txd);text-transform:uppercase;letter-spacing:1px;text-align:center;padding:4px 0}
+.grid{display:grid;gap:2px;border:2px solid var(--acd);border-radius:6px;padding:2px;background:var(--acd)}
+.g12x4{grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(4,1fr)}
+.zone{border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:52px;cursor:pointer;transition:all .15s;position:relative;padding:2px}
+.zone:hover{transform:scale(1.06);z-index:10;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.zone .em{font-size:18px;line-height:1}
+.zone .zl{font-size:7.5px;font-family:'DM Mono',monospace;opacity:.85;white-space:nowrap;margin-top:1px}
+.z-tom{background:color-mix(in srgb,var(--tom) 25%,var(--bg));border:1px solid var(--tom);color:var(--tom)}
+.z-bra{background:color-mix(in srgb,var(--bra) 20%,var(--bg));border:1px solid var(--bra);color:var(--bra)}
+.z-grn{background:color-mix(in srgb,var(--grn) 18%,var(--bg));border:1px solid var(--grn);color:var(--grn)}
+.z-rt{background:color-mix(in srgb,var(--rt) 20%,var(--bg));border:1px solid var(--rt);color:var(--rt)}
+.z-hrb{background:color-mix(in srgb,var(--hrb) 18%,var(--bg));border:1px solid var(--hrb);color:var(--hrb)}
+.z-leg{background:color-mix(in srgb,var(--leg) 18%,var(--bg));border:1px solid var(--leg);color:var(--leg)}
+.z-all{background:color-mix(in srgb,var(--all) 18%,var(--bg));border:1px solid var(--all);color:var(--all)}
+.z-shd{background:color-mix(in srgb,var(--shd) 40%,var(--bg));border:1px dashed #555;color:#888}
+.span2{grid-column:span 2}.span3{grid-column:span 3}.span4{grid-column:span 4}
+.span5{grid-column:span 5}.span6{grid-column:span 6}.span8{grid-column:span 8}
+.span12{grid-column:span 12}.rspan2{grid-row:span 2}
+.detail{display:none;background:var(--bg3);border:1px solid var(--bd);border-radius:8px;padding:14px 18px;margin-top:10px;font-size:13px;line-height:1.6}
+.detail.active{display:block}
+.detail h3{font-size:14px;font-weight:600;color:var(--txb);margin-bottom:6px}
+.detail .m{font-family:'DM Mono',monospace;font-size:11px;color:var(--txd);margin-bottom:6px}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;padding-top:12px;border-top:1px solid var(--bd)}
+.legend-i{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--txd)}
+.legend-s{width:12px;height:12px;border-radius:3px}
+
+/* CHECKLIST */
+.cl-section{margin-bottom:20px}
+.cl-section h3{font-size:14px;font-weight:600;margin-bottom:10px;padding:8px 12px;border-radius:6px}
+.cl-item{display:flex;align-items:flex-start;gap:10px;padding:8px 12px;border-bottom:1px solid var(--bd);font-size:13px;transition:background .1s}
+.cl-item:last-child{border-bottom:none}
+.cl-item:hover{background:var(--bg3)}
+.cl-item.checked{opacity:.5}
+.cl-item.checked .cl-name{text-decoration:line-through}
+.cl-cb{width:18px;height:18px;border-radius:4px;border:2px solid var(--bd);cursor:pointer;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.cl-cb.on{background:var(--chk);border-color:var(--chk)}
+.cl-cb.on::after{content:'✓';color:var(--bg);font-size:12px;font-weight:700}
+.cl-name{flex:1;color:var(--tx)}
+.cl-detail{font-size:11px;color:var(--txd);font-family:'DM Mono',monospace;min-width:120px;text-align:right}
+.cl-progress{background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.cl-bar{flex:1;height:8px;background:var(--bg3);border-radius:4px;overflow:hidden}
+.cl-bar-fill{height:100%;background:var(--chk);border-radius:4px;transition:width .3s}
+.cl-pct{font-family:'DM Mono',monospace;font-size:13px;color:var(--ac);min-width:45px;text-align:right}
+.cl-reset{font-size:11px;color:var(--txd);cursor:pointer;padding:4px 10px;border:1px solid var(--bd);border-radius:4px;background:none;font-family:'DM Sans',sans-serif}
+.cl-reset:hover{color:var(--tom);border-color:var(--tom)}
+
+/* FENCE GUIDE */
+.fence-step{padding:16px 0;border-bottom:1px solid var(--bd)}
+.fence-step:last-child{border-bottom:none}
+.fence-step h3{color:var(--txb);font-size:14px;margin-bottom:6px}
+.fence-step p{color:var(--txd);font-size:13px}
+.fence-warn{background:color-mix(in srgb,var(--warn) 12%,var(--bg));border:1px solid var(--warn);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--warn);margin-bottom:16px}
+.fence-spec{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.fence-spec-item{background:var(--bg3);border-radius:6px;padding:10px 14px}
+.fence-spec-item .label{font-size:11px;color:var(--txd);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.5px}
+.fence-spec-item .val{font-size:15px;color:var(--txb);font-weight:600;margin-top:2px}
+
+/* TIMELINE */
+.trow{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--bd);font-size:13px}
+.trow:last-child{border-bottom:none}
+.tdate{font-family:'DM Mono',monospace;font-size:11px;color:var(--ac);min-width:95px}
+.tact{flex:1}
+.ttag{font-family:'DM Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:var(--bg);border:1px solid var(--bd);color:var(--txd)}
+
+@media(max-width:768px){
+  .nav-inner{gap:0} .tab{padding:12px 12px;font-size:12px}
+  .page{padding:16px} .zone{min-height:38px} .zone .em{font-size:14px} .zone .zl{display:none}
+  .fence-spec{grid-template-columns:1fr} .cl-detail{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="nav"><div class="nav-inner">
+  <div class="nav-brand">🌱 <span>Garden HQ</span></div>
+  <div class="tab active" onclick="showPage('beds')">Bed Layout</div>
+  <div class="tab" onclick="showPage('timeline')">Timeline</div>
+  <div class="tab" onclick="showPage('shop')">Shopping List <span class="badge" id="shopBadge">0%</span></div>
+  <div class="tab" onclick="showPage('fence')">Fence Build</div>
+</div></div>
+
+<!-- ==================== BED LAYOUT ==================== -->
+<div class="page active" id="pg-beds">
+<div class="info">
+  ☀️ <strong>Sun:</strong> Midday–mid afternoon (~11am–3pm). House blocks morning. Evergreens block late afternoon.
+  <strong>South edges = most light.</strong><br>
+  ⚠️ <strong>Cross-shade applied:</strong> Tomatoes (6') on south side of Bed 1 will shade the north half by midsummer → north side is shade-tolerant understory only. Bed 2: tall crops on NORTH edge.
+</div>
+
+<div class="card">
+  <h2>Bed 1 — "Tomato Bed"</h2>
+  <div style="font-size:12px;color:var(--txd);font-family:'DM Mono',monospace;margin-bottom:14px">6 tomatoes + shade-tolerant understory · 4'×12' · 48 sq ft</div>
+  <div class="dir">↑ NORTH — house side, most shade (+ tomato canopy by July)</div>
+  <div class="grid g12x4">
+    <div class="zone z-hrb span3" onclick="showD(1,'basil')"><span class="em">🌿</span><span class="zl">Basil ×4</span></div>
+    <div class="zone z-hrb span2" onclick="showD(1,'parsley')"><span class="em">🌿</span><span class="zl">Parsley ×2</span></div>
+    <div class="zone z-grn span4" onclick="showD(1,'lettuce-under')"><span class="em">🥬</span><span class="zl">Lettuce/Arugula understory</span></div>
+    <div class="zone z-grn span3" onclick="showD(1,'chard')"><span class="em">🥬</span><span class="zl">Chard ×2</span></div>
+    <div class="zone z-shd span4" onclick="showD(1,'flex')"><span class="em">🌱</span><span class="zl">Flex — cilantro / extra lettuce</span></div>
+    <div class="zone z-hrb span2" onclick="showD(1,'cilantro')"><span class="em">🌿</span><span class="zl">Cilantro</span></div>
+    <div class="zone z-shd span6" onclick="showD(1,'flex')"><span class="em">🌱</span><span class="zl">Flex — open early, shaded by July</span></div>
+    <div class="zone z-tom span2 rspan2" onclick="showD(1,'sungold')"><span class="em">🍅</span><span class="zl">Sungold</span></div>
+    <div class="zone z-tom span2 rspan2" onclick="showD(1,'blkcherry')"><span class="em">🍅</span><span class="zl">Blk Cherry</span></div>
+    <div class="zone z-tom span2 rspan2" onclick="showD(1,'juliet')"><span class="em">🍅</span><span class="zl">Juliet</span></div>
+    <div class="zone z-tom span2 rspan2" onclick="showD(1,'blkkrim')"><span class="em">🍅</span><span class="zl">Blk Krim</span></div>
+    <div class="zone z-tom span2 rspan2" onclick="showD(1,'stupice')"><span class="em">🍅</span><span class="zl">Stupice</span></div>
+    <div class="zone z-tom span2 rspan2" onclick="showD(1,'cherokee')"><span class="em">🍅</span><span class="zl">Cherokee Prp</span></div>
+  </div>
+  <div class="dir">↓ SOUTH — open lawn, most sun · Tomatoes 24" apart, staked single/double leader</div>
+  <div class="detail" id="dp1"></div>
+  <div class="legend">
+    <div class="legend-i"><div class="legend-s" style="background:var(--tom)"></div>Tomatoes (~4 sq ft each)</div>
+    <div class="legend-i"><div class="legend-s" style="background:var(--hrb)"></div>Herbs</div>
+    <div class="legend-i"><div class="legend-s" style="background:var(--grn)"></div>Greens understory</div>
+    <div class="legend-i"><div class="legend-s" style="background:var(--shd)"></div>Flex / open</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Bed 2 — "Everything Else"</h2>
+  <div style="font-size:12px;color:var(--txd);font-family:'DM Mono',monospace;margin-bottom:14px">Brassicas, roots, greens, legumes · 4'×12' · 48 sq ft</div>
+  <div class="dir">↑ NORTH — tall crops here (kale, pea trellis) so they don't shade short crops</div>
+  <div class="grid g12x4">
+    <div class="zone z-grn span2" onclick="showD(2,'kale')"><span class="em">🥬</span><span class="zl">Kale ×1</span></div>
+    <div class="zone z-grn span2" onclick="showD(2,'kale')"><span class="em">🥬</span><span class="zl">Kale ×1</span></div>
+    <div class="zone z-grn span2" onclick="showD(2,'kale')"><span class="em">🥬</span><span class="zl">Kale ×1</span></div>
+    <div class="zone z-leg span6" onclick="showD(2,'peas')"><span class="em">🫛</span><span class="zl">Peas trellised (~40) · Spring → pull July</span></div>
+    <div class="zone z-bra span3" onclick="showD(2,'broccoli')"><span class="em">🥦</span><span class="zl">Broccoli ×2</span></div>
+    <div class="zone z-bra span2" onclick="showD(2,'cabbage')"><span class="em">🟢</span><span class="zl">Cabbage ×1</span></div>
+    <div class="zone z-bra span3" onclick="showD(2,'cauliflower')"><span class="em">⚪</span><span class="zl">Cauliflower ×2</span></div>
+    <div class="zone z-bra span2" onclick="showD(2,'kohlrabi')"><span class="em">🟣</span><span class="zl">Kohlrabi ×4</span></div>
+    <div class="zone z-leg span2" onclick="showD(2,'beans')"><span class="em">🫘</span><span class="zl">Beans</span></div>
+    <div class="zone z-rt span2" onclick="showD(2,'beets')"><span class="em">🟤</span><span class="zl">Beets</span></div>
+    <div class="zone z-rt span2" onclick="showD(2,'carrots')"><span class="em">🥕</span><span class="zl">Carrots</span></div>
+    <div class="zone z-rt span2" onclick="showD(2,'radish')"><span class="em">🔴</span><span class="zl">Radishes</span></div>
+    <div class="zone z-all span2" onclick="showD(2,'scallions')"><span class="em">🧅</span><span class="zl">Scallions</span></div>
+    <div class="zone z-leg span4" onclick="showD(2,'beans')"><span class="em">🫘</span><span class="zl">Bush Beans cont'd</span></div>
+    <div class="zone z-grn span4" onclick="showD(2,'lettuce')"><span class="em">🥬</span><span class="zl">Lettuce mix</span></div>
+    <div class="zone z-grn span3" onclick="showD(2,'spinach')"><span class="em">🍃</span><span class="zl">Spinach</span></div>
+    <div class="zone z-grn span3" onclick="showD(2,'arugula')"><span class="em">🍃</span><span class="zl">Arugula</span></div>
+    <div class="zone z-shd span2" onclick="showD(2,'flex2')"><span class="em">🌱</span><span class="zl">Flex</span></div>
+  </div>
+  <div class="dir">↓ SOUTH — max sun · Low greens only, nothing tall</div>
+  <div class="detail" id="dp2"></div>
+  <div class="legend">
+    <div class="legend-i"><div class="legend-s" style="background:var(--bra)"></div>Brassicas</div>
+    <div class="legend-i"><div class="legend-s" style="background:var(--grn)"></div>Greens</div>
+    <div class="legend-i"><div class="legend-s" style="background:var(--rt)"></div>Roots</div>
+    <div class="legend-i"><div class="legend-s" style="background:var(--leg)"></div>Legumes</div>
+    <div class="legend-i"><div class="legend-s" style="background:var(--all)"></div>Alliums</div>
+  </div>
+</div>
+</div>
+
+<!-- ==================== TIMELINE ==================== -->
+<div class="page" id="pg-timeline">
+<div class="card">
+  <h2>📅 Planting Timeline</h2>
+  <div class="trow"><span class="tdate">Mar 14–16</span><span class="tact">Start indoors: broccoli, cabbage, cauliflower, kale, kohlrabi, head lettuce</span><span class="ttag">indoor</span></div>
+  <div class="trow"><span class="tdate">Mar 28–Apr 1</span><span class="tact">Start indoors: 6 tomatoes, chard, parsley</span><span class="ttag">indoor</span></div>
+  <div class="trow" style="color:var(--warn)"><span class="tdate">Apr 1–15</span><span class="tact">⚠️ BUILD GROUNDHOG FENCE — must be done before outdoor planting</span><span class="ttag">build</span></div>
+  <div class="trow"><span class="tdate">Apr 10–20</span><span class="tact">Direct sow Bed 2: peas, spinach, arugula, lettuce, radishes, beets, carrots, scallions</span><span class="ttag">outdoor</span></div>
+  <div class="trow"><span class="tdate">Apr 15–20</span><span class="tact">Start indoors: basil</span><span class="ttag">indoor</span></div>
+  <div class="trow"><span class="tdate">Late Apr</span><span class="tact">Transplant brassicas + kale + chard to beds (row cover if frost risk)</span><span class="ttag">transplant</span></div>
+  <div class="trow"><span class="tdate">Early May</span><span class="tact">Direct sow bush beans Bed 2 (soil ≥60°F)</span><span class="ttag">outdoor</span></div>
+  <div class="trow"><span class="tdate">May 20–25</span><span class="tact">Transplant tomatoes + basil to Bed 1. Direct sow cilantro.</span><span class="ttag">transplant</span></div>
+  <div class="trow"><span class="tdate">Early Jun</span><span class="tact">Resow #2: lettuce, arugula, radishes (replace spent spring greens)</span><span class="ttag">resow</span></div>
+  <div class="trow"><span class="tdate">Mid Jul</span><span class="tact">Pull spent peas → resow fall carrots or scallions. Optional resow #3 greens.</span><span class="ttag">resow</span></div>
+  <div class="trow"><span class="tdate">Late Aug</span><span class="tact">Optional: resow spinach + arugula for fall harvest</span><span class="ttag">resow</span></div>
+</div>
+</div>
+
+<!-- ==================== SHOPPING LIST ==================== -->
+<div class="page" id="pg-shop">
+<div class="cl-progress">
+  <div style="font-size:13px;color:var(--txd)">Shopping progress</div>
+  <div class="cl-bar"><div class="cl-bar-fill" id="barFill" style="width:0"></div></div>
+  <div class="cl-pct" id="pctLabel">0%</div>
+  <button class="cl-reset" onclick="resetChecks()">Reset all</button>
+</div>
+<div id="checklistContainer"></div>
+</div>
+
+<!-- ==================== FENCE BUILD ==================== -->
+<div class="page" id="pg-fence">
+<div class="fence-warn">⚠️ <strong>Call 811 (NJ One Call)</strong> at least 3 business days before digging. Free utility marking. Non-negotiable — even for a 12" trench.</div>
+
+<div class="card">
+  <h2>Enclosure Spec</h2>
+  <p style="color:var(--txd);font-size:13px;margin-bottom:12px">Single enclosure around both beds. ~16'×16' footprint (adjust to actual bed spacing). 18-24" clearance from beds to fence on all sides.</p>
+  <div class="fence-spec">
+    <div class="fence-spec-item"><div class="label">Perimeter</div><div class="val">~64 linear feet</div></div>
+    <div class="fence-spec-item"><div class="label">Above ground</div><div class="val">4 ft welded wire</div></div>
+    <div class="fence-spec-item"><div class="label">Below ground</div><div class="val">12" trench + L-apron</div></div>
+    <div class="fence-spec-item"><div class="label">Top treatment</div><div class="val">12" wobble overhang</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Build Sequence</h2>
+
+  <div class="fence-step">
+    <h3>Step 0: Pre-dig (1-2 weeks before)</h3>
+    <p>Call 811 for utility marking. Probe soil along planned perimeter with rebar — check for rock at 12". Mark perimeter with stakes and string, 18-24" out from bed edges. Choose gate location (side closest to house/hose).</p>
+  </div>
+
+  <div class="fence-step">
+    <h3>Step 1: Dig the Trench (Day 1 morning)</h3>
+    <p><strong>Spec:</strong> 12" deep, 6-8" wide, full perimeter (~64 ft).</p>
+    <p><strong>Recommended: Rent a walk-behind trencher</strong> (~$150-200/day from Home Depot Tool Rental or Sunbelt). Does 64 feet in under an hour vs. a full day of manual labor. Warren County has shale and evergreen roots — a trencher handles both. Reserve ahead, spring is busy season.</p>
+    <p><strong>Manual alternative:</strong> Trenching shovel (narrow 4" blade, $35) + mattock ($35) for roots and rock. Budget a full day. Dig in 6" lifts, pile dirt on the outside. Cut tree roots cleanly with loppers — don't rip them.</p>
+    <p><strong>If you hit rock at 8-10":</strong> Compensate with a wider L-apron (18" outward instead of 12"). Doesn't need to be perfect — just needs to defeat a groundhog's dig attempt.</p>
+  </div>
+
+  <div class="fence-step">
+    <h3>Step 2: Set Posts (Day 1 afternoon)</h3>
+    <p>Drive T-posts every 5-6 feet around the perimeter with a manual post driver. Corner posts go at corners. Gate posts: use two T-posts side by side, or 4×4 wood posts in concrete for stability. Posts go 18-24" into ground, flat nub side facing inward. 14 posts total for a 64' perimeter.</p>
+  </div>
+
+  <div class="fence-step">
+    <h3>Step 3: Attach Fencing + Apron (Day 2 morning)</h3>
+    <p>Unroll 4' welded wire (2"×4" mesh) along the perimeter. Attach to posts with T-post clips or heavy zip ties every 8-12" vertically. <strong>The bottom 12" bends outward at 90° into the trench</strong> to form the L-apron — this is the critical anti-dig barrier. If using separate hardware cloth for the apron, overlap it with the vertical fencing by 4-6" and tie together with wire.</p>
+  </div>
+
+  <div class="fence-step">
+    <h3>Step 4: Wobble Top</h3>
+    <p>Leave the top 12" of fencing <strong>unattached</strong> to any post or rail. Bend it outward at ~45°. It should flop loosely when pushed. A groundhog climbing the rigid lower section hits this wobbly overhang and can't get leverage to climb over. If your fencing is too rigid to flop, attach a strip of chicken wire at the top extending outward.</p>
+  </div>
+
+  <div class="fence-step">
+    <h3>Step 5: Backfill Trench</h3>
+    <p>Push piled dirt back over the buried L-apron. Tamp firmly. The apron should be completely covered. Grass will eventually grow over it, locking it in place.</p>
+  </div>
+
+  <div class="fence-step">
+    <h3>Step 6: Build + Hang Gate</h3>
+    <p>36-40" wide (wheelbarrow width). Frame from 2×4 PT lumber: two stiles + two rails + diagonal brace (bottom hinge side → top latch side to prevent sag). Staple welded wire across frame. Hang with strap hinges, latch with barrel bolt. <strong>No gap under the gate</strong> — add a wire mesh threshold if needed.</p>
+  </div>
+
+  <div class="fence-step">
+    <h3>Maintenance</h3>
+    <p>Monthly inspection during growing season. Look for dig marks at the fence line. Add soil over apron if you see attempts. Replace rusted/damaged wire before it becomes a weak point. Check after winter for snow/ice deformation.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Quick Alternative: Temporary Bed Cages</h2>
+  <p style="color:var(--txd);font-size:13px">Since your beds are raised 12", you can staple hardware cloth directly to the bed sides extending 3-4' upward as a temporary cage while you build the real fence. Ugly and annoying to work inside, but buys you a few weeks if the real fence isn't done by planting time.</p>
+</div>
+</div>
+
+<script>
+// ==================== TAB NAV ====================
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('pg-'+id).classList.add('active');
+  document.querySelectorAll('.tab')[['beds','timeline','shop','fence'].indexOf(id)].classList.add('active');
+}
+
+// ==================== BED DETAIL POPUPS ====================
+const D={
+  sungold:{n:'Sungold Cherry Tomato',v:'Sungold F1',sp:'24" apart',t:'Indoors Mar 28 → transplant May 20-25',d:'#1 shade pick. Prolific cherry, fast ripener, exceptional sweetness. Prune to 2 leaders, stake vertically. Expect first fruit late July.'},
+  blkcherry:{n:'Black Cherry Tomato',v:'Black Cherry',sp:'24" apart',t:'Indoors Mar 28 → transplant May 20-25',d:'High yields in shade. Deep smoky-sweet flavor. Prune to 2 leaders. 75 days (expect 85-90 in shade).'},
+  juliet:{n:'Juliet Grape Tomato',v:'Juliet F1',sp:'24" apart',t:'Indoors Mar 28 → transplant May 20-25',d:'Prolific grape/plum hybrid. Strong disease resistance — important in shady, moist conditions. Great for roasting.'},
+  blkkrim:{n:'Black Krim Heirloom',v:'Black Krim',sp:'24" apart',t:'Indoors Mar 28 → transplant May 20-25',d:'Russian heirloom. Produces in 4-5hrs sun. Rich, smoky, intense flavor. Your #1 slicer pick. Heavy fruits need strong staking.'},
+  stupice:{n:'Stupice Heirloom',v:'Stupice',sp:'24" apart',t:'Indoors Mar 28 → transplant May 20-25',d:'Czech heirloom, ~60 days. Cold tolerant. Early harvest insurance before shade closes in midsummer.'},
+  cherokee:{n:'Cherokee Purple',v:'Cherokee Purple',sp:'24" apart',t:'Indoors Mar 28 → transplant May 20-25',d:'Classic heirloom slicer. Rich, sweet, complex. Documented shade tolerance. Prune to single leader.'},
+  basil:{n:'Basil',v:'Genovese',sp:'8-12" (4 plants)',t:'Indoors Apr 15 → transplant late May',d:'Companion plant near tomatoes. Harvest frequently, pinch flowers. Will slow once tomato canopy blocks light in July.'},
+  parsley:{n:'Parsley',v:'Italian Flat Leaf',sp:'6-8" (2 plants)',t:'Indoors Mar 28 (slow: 2-3 wks)',d:'Shade tolerant. Produces heavily once established. Biennial — overwinters.'},
+  cilantro:{n:'Cilantro',v:'Santo (slow-bolt)',sp:'Broadcast ~2 sq ft',t:'Direct sow late May',d:'Shade slows bolting. One sowing. Let it go to seed for coriander.'},
+  chard:{n:'Swiss Chard',v:'Bright Lights',sp:'10-12" (2 plants)',t:'Indoors Mar 28 → transplant late Apr',d:'Shade champion. Thrives 3-5hrs sun. All-season producer. Tolerates tomato canopy. Very low maintenance.'},
+  'lettuce-under':{n:'Lettuce Understory',v:'Mesclun mix',sp:'Broadcast',t:'Direct sow with tomato transplant (May)',d:'Living mulch under tomato canopy. Harvest baby greens aggressively in June. By July too shaded — that\'s fine.'},
+  flex:{n:'Flex Space',v:'—',sp:'—',t:'—',d:'Open early season — tuck in radishes or lettuce. By July, tomato shade makes this fallow. Just mulch it.'},
+  kale:{n:'Kale',v:'Lacinato or Red Russian',sp:'18" apart (3 plants)',t:'Indoors NOW → transplant late Apr',d:'Ultra shade-tolerant. Harvest outer leaves all season. On north edge — 2-3\' tall, won\'t shade anything from here.'},
+  peas:{n:'Sugar Snap Peas',v:'Sugar Snap',sp:'2-3" apart (~40 plants)',t:'Direct sow mid-April',d:'Trellised NORTH edge. Cool-season, done by July. Pull and replant space with fall carrots or scallions.'},
+  broccoli:{n:'Broccoli',v:'De Cicco',sp:'18" apart (2 plants)',t:'Indoors NOW → transplant late Apr',d:'Side-shoot producer — extended harvest. After main head, keeps producing florets for weeks.'},
+  cabbage:{n:'Cabbage',v:'Early Jersey Wakefield',sp:'18" (1 plant)',t:'Indoors NOW → transplant late Apr',d:'Classic NJ variety. Pointed head, sweet, 60-70 days. One plant = one big head.'},
+  cauliflower:{n:'Cauliflower',v:'Snowball',sp:'24" apart (2 plants)',t:'Indoors NOW → transplant late Apr',d:'Your experiment. Shade helps — too much sun scorches curds. Blanch heads by tying outer leaves over curd.'},
+  kohlrabi:{n:'Kohlrabi',v:'Early White Vienna',sp:'6" apart (4 plants)',t:'Indoors NOW or direct sow',d:'Fast (55 days), compact, underrated. Crisp, sweet raw or roasted. Harvest at 2-3" diameter.'},
+  beans:{n:'Bush Beans',v:'Provider or Contender',sp:'4" apart (~54 plants in 6 sq ft)',t:'Direct sow early May',d:'One main sowing, optional second late June. No trellis. Harvest frequently. Very low maintenance.'},
+  beets:{n:'Beets',v:'Detroit Dark Red',sp:'4" apart (~18 plants in 2 sq ft)',t:'Direct sow mid-April',d:'Shade tolerant. Eat roots AND greens (cook greens like chard). One sowing.'},
+  carrots:{n:'Carrots',v:'Parisian Market or Chantenay',sp:'2-3" apart (~32 in 2 sq ft)',t:'Direct sow mid-April',d:'SHORT varieties only — 12" bed depth. Slow germinator. Keep moist. Interplant radishes as row markers.'},
+  radish:{n:'Radishes',v:'Cherry Belle',sp:'2" apart (~32 in 2 sq ft)',t:'Direct sow mid-April, resow June',d:'25-30 day harvest. Fastest crop in the garden. Shade mellows flavor.'},
+  scallions:{n:'Scallions',v:'Evergreen Hardy White',sp:'1-2" apart',t:'Direct sow mid-April',d:'Zero maintenance. Pull as needed. 3+ hours sun.'},
+  lettuce:{n:'Lettuce Mix',v:'Mesclun',sp:'Broadcast in 4 sq ft',t:'Direct sow mid-April, resow June',d:'Shade slows bolting = extended harvest. Cut baby greens at 3-4". Regrows 3-4x.'},
+  spinach:{n:'Spinach',v:'Bloomsdale Long Standing',sp:'3-4" apart in 3 sq ft',t:'Direct sow mid-April',d:'Bolt-resistant. Thrives in shade + cool. Bolts in June heat. Resow late August for fall.'},
+  arugula:{n:'Arugula',v:'Roquette',sp:'Broadcast in 3 sq ft',t:'Direct sow mid-April, resow June',d:'Grows in 3hrs sun. Shade mellows peppery bite. Baby leaves in 3-4 weeks.'},
+  flex2:{n:'Flex / Resow',v:'—',sp:'—',t:'—',d:'Reserved for mid-season replanting after spring greens bolt.'}
+};
+function showD(bed,id){
+  const c=D[id];if(!c)return;
+  const p=document.getElementById('dp'+bed);
+  p.innerHTML=`<h3>${c.n}</h3><div class="m">${c.v} · ${c.sp}</div><div class="m">📅 ${c.t}</div><p style="margin-top:6px;color:var(--txd)">${c.d}</p>`;
+  p.classList.add('active');
+  document.getElementById('dp'+(bed===1?2:1)).classList.remove('active');
+}
+
+// ==================== PERSISTENT CHECKLIST ====================
+const LISTS=[
+  {title:'🍅 Seeds — Tomatoes',color:'var(--tom)',items:[
+    {name:'Sungold F1 (cherry)',detail:'1 pkt'},
+    {name:'Black Cherry',detail:'1 pkt'},
+    {name:'Juliet F1 (grape)',detail:'1 pkt'},
+    {name:'Black Krim (heirloom)',detail:'1 pkt'},
+    {name:'Stupice (heirloom)',detail:'1 pkt'},
+    {name:'Cherokee Purple',detail:'1 pkt'},
+  ]},
+  {title:'🥦 Seeds — Brassicas',color:'var(--bra)',items:[
+    {name:'Broccoli — De Cicco',detail:'1 pkt'},
+    {name:'Cabbage — Early Jersey Wakefield',detail:'1 pkt'},
+    {name:'Cauliflower — Snowball or Amazing',detail:'1 pkt'},
+    {name:'Kale — Lacinato or Red Russian',detail:'1 pkt'},
+    {name:'Kohlrabi — Early White Vienna',detail:'1 pkt'},
+  ]},
+  {title:'🥬 Seeds — Greens & Herbs',color:'var(--grn)',items:[
+    {name:'Lettuce — Mesclun mix',detail:'1 pkt'},
+    {name:'Spinach — Bloomsdale Long Standing',detail:'1 pkt'},
+    {name:'Arugula — Roquette',detail:'1 pkt'},
+    {name:'Swiss Chard — Bright Lights',detail:'1 pkt'},
+    {name:'Basil — Genovese',detail:'1 pkt'},
+    {name:'Parsley — Italian Flat Leaf',detail:'1 pkt'},
+    {name:'Cilantro — Santo',detail:'1 pkt'},
+  ]},
+  {title:'🥕 Seeds — Roots, Legumes, Alliums',color:'var(--rt)',items:[
+    {name:'Beets — Detroit Dark Red',detail:'1 pkt'},
+    {name:'Carrots — Parisian Market or Chantenay',detail:'1 pkt'},
+    {name:'Radishes — Cherry Belle',detail:'1 pkt'},
+    {name:'Peas — Sugar Snap',detail:'1 pkt'},
+    {name:'Bush Beans — Provider or Contender',detail:'1 pkt'},
+    {name:'Scallions — Evergreen Hardy White',detail:'1 pkt'},
+  ]},
+  {title:'🔩 Fencing — Wire & Posts',color:'#795548',items:[
+    {name:'Welded wire fencing 2"×4", 4\' tall',detail:'100 ft · ~$110'},
+    {name:'Metal T-posts 6\'',detail:'14 posts · ~$98'},
+    {name:'T-post driver (manual)',detail:'1 · ~$30'},
+    {name:'T-post clips',detail:'50ct bag · ~$8'},
+    {name:'Heavy-duty UV zip ties',detail:'100ct · ~$10'},
+    {name:'Hardware cloth 1/2", 24" wide (apron)',detail:'100 ft · ~$110'},
+    {name:'Gate hinges + latch',detail:'1 set · ~$20'},
+    {name:'2×4 PT lumber 8\' (gate frame)',detail:'3 boards · ~$18'},
+    {name:'Wire cutters / aviation snips',detail:'1 · ~$18'},
+    {name:'Stakes + string (layout)',detail:'~$5'},
+  ]},
+  {title:'🔨 Trenching',color:'var(--warn)',items:[
+    {name:'Walk-behind trencher rental (RECOMMENDED)',detail:'1 day · ~$175'},
+    {name:'— OR: Trenching shovel + mattock (manual)',detail:'~$70'},
+  ]},
+  {title:'🌍 Soil & Amendments',color:'#8D6E63',items:[
+    {name:'Organic all-purpose fertilizer (Espoma etc)',detail:'10 lbs · ~$18'},
+    {name:'Greensand',detail:'5 lbs · ~$12'},
+    {name:'Soil pH test kit',detail:'1 · ~$15'},
+  ]},
+  {title:'🏗️ Plant Support & Pest',color:'var(--acd)',items:[
+    {name:'Tomato stakes or cages 6\'+',detail:'6 · ~$48'},
+    {name:'Trellis netting (peas) 6×4 ft',detail:'1 · ~$12'},
+    {name:'Row cover / frost cloth',detail:'1 · ~$15'},
+    {name:'Sluggo (iron phosphate)',detail:'1 · ~$10'},
+    {name:'Neem oil concentrate',detail:'1 · ~$12'},
+  ]},
+];
+
+const STORE_KEY='gardenChecklist2026';
+
+function loadChecks(){
+  try{return JSON.parse(localStorage.getItem(STORE_KEY))||{};}catch(e){return {};}
+}
+function saveChecks(state){
+  try{localStorage.setItem(STORE_KEY,JSON.stringify(state));}catch(e){}
+}
+function resetChecks(){
+  if(!confirm('Reset all checkboxes?'))return;
+  localStorage.removeItem(STORE_KEY);
+  renderChecklist();
+}
+
+function renderChecklist(){
+  const state=loadChecks();
+  const container=document.getElementById('checklistContainer');
+  let html='';
+  let total=0,checked=0;
+  LISTS.forEach((sec,si)=>{
+    html+=`<div class="cl-section"><h3 style="background:color-mix(in srgb,${sec.color} 15%,var(--bg));border:1px solid color-mix(in srgb,${sec.color} 30%,var(--bd));color:${sec.color}">${sec.title}</h3>`;
+    sec.items.forEach((item,ii)=>{
+      const key=si+'-'+ii;
+      const on=!!state[key];
+      total++;
+      if(on)checked++;
+      html+=`<div class="cl-item${on?' checked':''}" id="cli-${key}">
+        <div class="cl-cb${on?' on':''}" onclick="toggleCheck('${key}')"></div>
+        <div class="cl-name">${item.name}</div>
+        <div class="cl-detail">${item.detail}</div>
+      </div>`;
+    });
+    html+=`</div>`;
+  });
+  container.innerHTML=html;
+  const pct=total?Math.round(checked/total*100):0;
+  document.getElementById('barFill').style.width=pct+'%';
+  document.getElementById('pctLabel').textContent=pct+'%';
+  document.getElementById('shopBadge').textContent=pct+'%';
+}
+
+function toggleCheck(key){
+  const state=loadChecks();
+  state[key]=!state[key];
+  if(!state[key])delete state[key];
+  saveChecks(state);
+  renderChecklist();
+}
+
+renderChecklist();
+</script>
+</body>
+</html>
