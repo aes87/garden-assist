@@ -4,7 +4,7 @@ Home vegetable garden plan for two 4x12 raised beds (12" depth) in Warren County
 
 ## Quick Start
 
-Open `app/garden-hq.html` in any browser — it's a self-contained single-page app with:
+**[Open Garden HQ Planner](https://aes87.github.io/garden-assist/)** — interactive single-page app with:
 - **Bed Layout** — interactive grid showing plant placement for both beds
 - **Timeline** — planting schedule from seed start through fall
 - **Shopping Checklist** — persistent checkboxes (saved in localStorage)
