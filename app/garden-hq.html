@@ -343,36 +343,36 @@ function showD(bed,id){
 // ==================== PERSISTENT CHECKLIST ====================
 const LISTS=[
   {title:'🍅 Seeds — Tomatoes',color:'var(--tom)',items:[
-    {name:'Sungold F1 (cherry)',detail:'1 pkt'},
-    {name:'Black Cherry',detail:'1 pkt'},
-    {name:'Juliet F1 (grape)',detail:'1 pkt'},
-    {name:'Black Krim (heirloom)',detail:'1 pkt'},
-    {name:'Stupice (heirloom)',detail:'1 pkt'},
-    {name:'Cherokee Purple',detail:'1 pkt'},
+    {name:'Tomato — Tiny Tim (cherry, shade-tolerant)',detail:'✅ Pack 2',have:true},
+    {name:'Tomato — Red Cherry Large',detail:'✅ Pack 1',have:true},
+    {name:'Tomato — Sungold F1 (#1 shade cherry)',detail:'BUY'},
   ]},
   {title:'🥦 Seeds — Brassicas',color:'var(--bra)',items:[
-    {name:'Broccoli — De Cicco',detail:'1 pkt'},
-    {name:'Cabbage — Early Jersey Wakefield',detail:'1 pkt'},
-    {name:'Cauliflower — Snowball or Amazing',detail:'1 pkt'},
-    {name:'Kale — Lacinato or Red Russian',detail:'1 pkt'},
-    {name:'Kohlrabi — Early White Vienna',detail:'1 pkt'},
+    {name:'Broccoli — Waltham 29',detail:'✅ Pack 2',have:true},
+    {name:'Cabbage — Copenhagen Market / Golden Acre',detail:'✅ Pack 1 & 2',have:true},
+    {name:'Cauliflower — Snowball',detail:'✅ Pack 1 & 2',have:true},
+    {name:'Kale — Lacinato',detail:'✅ Pack 2',have:true},
+    {name:'Kohlrabi — Purple Vienna',detail:'✅ Pack 1',have:true},
   ]},
   {title:'🥬 Seeds — Greens & Herbs',color:'var(--grn)',items:[
-    {name:'Lettuce — Mesclun mix',detail:'1 pkt'},
-    {name:'Spinach — Bloomsdale Long Standing',detail:'1 pkt'},
-    {name:'Arugula — Roquette',detail:'1 pkt'},
-    {name:'Swiss Chard — Bright Lights',detail:'1 pkt'},
-    {name:'Basil — Genovese',detail:'1 pkt'},
-    {name:'Parsley — Italian Flat Leaf',detail:'1 pkt'},
-    {name:'Cilantro — Santo',detail:'1 pkt'},
+    {name:'Lettuce — DIY mix (Simpson, Oak Leaf, Buttercrunch, Mignonette, Salad Bowl)',detail:'✅ Pack 1 & 2',have:true},
+    {name:'Spinach — Bloomsdale Long Standing',detail:'✅ Pack 1',have:true},
+    {name:'Arugula',detail:'✅ Pack 2',have:true},
+    {name:'Swiss Chard — Ruby Red',detail:'✅ Pack 1',have:true},
+    {name:'Cilantro',detail:'✅ Pack 2',have:true},
+    {name:'Basil — Genovese',detail:'BUY'},
+    {name:'Parsley — Italian Flat Leaf',detail:'BUY'},
   ]},
   {title:'🥕 Seeds — Roots, Legumes, Alliums',color:'var(--rt)',items:[
-    {name:'Beets — Detroit Dark Red',detail:'1 pkt'},
-    {name:'Carrots — Parisian Market or Chantenay',detail:'1 pkt'},
-    {name:'Radishes — Cherry Belle',detail:'1 pkt'},
-    {name:'Peas — Sugar Snap',detail:'1 pkt'},
-    {name:'Bush Beans — Provider or Contender',detail:'1 pkt'},
-    {name:'Scallions — Evergreen Hardy White',detail:'1 pkt'},
+    {name:'Beets — Early Wonder',detail:'✅ Pack 1',have:true},
+    {name:'Carrots — Little Finger (primary, 3-4")',detail:'✅ Pack 2',have:true},
+    {name:'Carrots — Scarlet Nantes (secondary)',detail:'✅ Pack 1',have:true},
+    {name:'Radishes — Cherry Belle',detail:'✅ Pack 1',have:true},
+    {name:'Radishes — French Breakfast',detail:'✅ Pack 1',have:true},
+    {name:'Cucumber — Marketmore',detail:'✅ Pack 1',have:true},
+    {name:'Peas — Sugar Snap',detail:'BUY'},
+    {name:'Bush Beans — Provider or Contender',detail:'BUY'},
+    {name:'Scallions — Evergreen Hardy White',detail:'BUY'},
   ]},
   {title:'🔩 Fencing — Wire & Posts',color:'#795548',items:[
     {name:'Welded wire fencing 2"×4", 4\' tall',detail:'100 ft · ~$110'},
@@ -406,14 +406,19 @@ const LISTS=[
 
 const STORE_KEY='gardenChecklist2026';
 
+function defaultChecks(){
+  const d={};
+  LISTS.forEach((sec,si)=>{sec.items.forEach((item,ii)=>{if(item.have)d[si+'-'+ii]=true;});});
+  return d;
+}
 function loadChecks(){
-  try{return JSON.parse(localStorage.getItem(STORE_KEY))||{};}catch(e){return {};}
+  try{const s=localStorage.getItem(STORE_KEY);return s?JSON.parse(s):defaultChecks();}catch(e){return defaultChecks();}
 }
 function saveChecks(state){
   try{localStorage.setItem(STORE_KEY,JSON.stringify(state));}catch(e){}
 }
 function resetChecks(){
-  if(!confirm('Reset all checkboxes?'))return;
+  if(!confirm('Reset to defaults? (Items you have will stay checked)'))return;
   localStorage.removeItem(STORE_KEY);
   renderChecklist();
 }
