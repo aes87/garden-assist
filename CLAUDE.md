@@ -1,4 +1,4 @@
-> Also follow `/workspace/CLAUDE.md` for global workspace conventions.
+@../../CLAUDE.md
 
 # Garden Assist
 
